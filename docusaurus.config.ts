@@ -61,7 +61,7 @@ const config: Config = {
     navbar: {
       title: 'ClappyDocs',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Clappy Logo',
         src: 'img/Clappy-64x64.webp',
       },
       items: [

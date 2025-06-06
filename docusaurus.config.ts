@@ -88,7 +88,7 @@ const config: Config = {
           items: [
             {
               label: 'ClappyBot',
-              to: '/docs/clappybot',
+              to: '/category/clappybot',
             },
           ],
         },

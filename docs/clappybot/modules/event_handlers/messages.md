@@ -49,7 +49,7 @@ module.exports = {
 }
 ```
 
-## ➖ MemberLeave
+## ➖ MessageDelete
 
 Has one argument ` message ` who is an instance of [` Message `](https://discord.js.org/docs/packages/discord.js/14.19.3/Message:Class).
 ```js
@@ -68,7 +68,7 @@ module.exports = {
 }
 ```
 
-## 🆙 MemberUpdate
+## 🆙 MessageUpdate
 
 Has two arguments ` old_message ` and ` new_message ` who are instances of [` Message `](https://discord.js.org/docs/packages/discord.js/14.19.3/Message:Class).
 

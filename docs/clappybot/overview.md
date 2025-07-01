@@ -11,3 +11,6 @@ ClappyBot offers a solution to this problem by providing a system that will mana
 A module is a grouping of commands and other interactions of the same theme. For example, we could group the commands “/ban”, “/kick”, etc. under a single module called “moderation”.
 
 This framework will therefore enable you to create numerous modules quickly and easily, without worrying about importing them or other issues such as database linking, so that you can concentrate solely on adding functionality and not on the surrounding system.
+
+In the next lecture you will learn how to build your clappybot from scratch, but you can also check out [⏬️ Include in an existing project](/clappybot/include)
+if you already have a project and you just want to add clappybot's functionalities.

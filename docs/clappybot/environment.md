@@ -7,7 +7,7 @@ You need to create your own `.env` in the `data` folder, to do this, you can use
 
 `SERVICE_ID` is a custom unique identifier for your bot (useful if you want to manage a large number of bots using containers).
 
-`DB_DRIVER` can be set to `mysql` (for remote db) or `sqlite` (for local db) IP or domain of your database
+`DB_DRIVER` can be set to `mysql` (for remote db) or `sqlite` (for local db)
 
 `DB_HOST` (only if `DB_DRIVER=mysql`) IP or domain of your database
 

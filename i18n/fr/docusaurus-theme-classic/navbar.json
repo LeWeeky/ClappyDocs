@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "ClappyDocs",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Clappy Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Intro": {
+    "message": "Intro",
+    "description": "Navbar item with label Intro"
+  },
+  "item.label.ClappyBot": {
+    "message": "ClappyBot",
+    "description": "Navbar item with label ClappyBot"
+  },
+  "item.label.Basic": {
+    "message": "Basic",
+    "description": "Navbar item with label Basic"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.ClappyBot": {
+    "message": "ClappyBot",
+    "description": "The label for category ClappyBot in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.ClappyBot.link.generated-index.description": {
+    "message": "Tout ce que vous devez savoir sur notre puissant système de bot discord.",
+    "description": "The generated-index page description for category ClappyBot in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.📦 Modules": {
+    "message": "📦 Modules",
+    "description": "The label for category 📦 Modules in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.📦 Modules.link.generated-index.description": {
+    "message": "C'est parti pour la création de votre premier module.",
+    "description": "The generated-index page description for category 📦 Modules in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.✊ Events handlers": {
+    "message": "✊ Gestion des évènements",
+    "description": "The label for category ✊ Events handlers in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.✊ Events handlers.link.generated-index.description": {
+    "message": "Voir comment gérer les évènements discord.js.",
+    "description": "The generated-index page description for category ✊ Events handlers in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Basic": {
+    "message": "Basic",
+    "description": "The label for category Basic in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Basic.link.generated-index.description": {
+    "message": "Un plugin Minecraft vraiment \"basic\".",
+    "description": "The generated-index page description for category Basic in sidebar tutorialSidebar"
+  }
+}

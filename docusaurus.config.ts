@@ -33,7 +33,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'fr'],
   },
 
   presets: [
@@ -73,6 +73,10 @@ const config: Config = {
         },
         {to: '/category/clappybot', label: 'ClappyBot', position: 'left'},
         {to: '/category/basic', label: 'Basic', position: 'left'},
+		{
+          type: 'localeDropdown',
+          position: 'right',
+        },
         {
           href: 'https://github.com/LeWeeky/ClappyDocs.git',
           label: 'GitHub',

@@ -1,0 +1,34 @@
+{
+  "link.title.Docs": {
+    "message": "Docs",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "Communauté",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.Illustrations": {
+    "message": "Illustrations",
+    "description": "The title of the footer links column with title=Illustrations in the footer"
+  },
+  "link.item.label.ClappyBot": {
+    "message": "ClappyBot",
+    "description": "The label of footer link with label=ClappyBot linking to /category/clappybot"
+  },
+  "link.item.label.ClappyCrew": {
+    "message": "ClappyCrew",
+    "description": "The label of footer link with label=ClappyCrew linking to https://discord.gg/7uxtbHd3Gt"
+  },
+  "link.item.label.L'île Technologique": {
+    "message": "L'île Technologique",
+    "description": "The label of footer link with label=L'île Technologique linking to https://discord.gg/UvQfUbk"
+  },
+  "link.item.label.Designed by stories / Freepik": {
+    "message": "Designé par stories / Freepik",
+    "description": "The label of footer link with label=Designed by stories / Freepik linking to http://www.freepik.com/search?file_type=svg&format=search&last_filter=query&last_value=%40stories&query=%40stories"
+  },
+  "copyright": {
+    "message": "Copyright © 2025 ClappyCrew. Développé avec ❤️ et Docusaurus.",
+    "description": "The footer copyright"
+  }
+}

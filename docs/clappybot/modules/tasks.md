@@ -7,10 +7,10 @@ It could be an automatic message in a channel with the day's weather and forecas
 or an update checker every Monday at 3am that will restart the bot in case of a new version or anything else you
 do on a regular basis.
 
-All tasks belonging to a module must be located in the module's tasks folder. for example, if my module is ‘mymodule’,
+All tasks belonging to a module must be located in the module's tasks folder. For example, if my module is `mymodule`,
 the tasks will be located in `./sources/modules/mymodules/tasks`.
 
-Here is an example of task to tell you good morning each day at 8 am :
+Here is an example of task to tell you good morning each day at 8 am:
 ```js
 const {CronJob} = require('cron')
 

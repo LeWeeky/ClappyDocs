@@ -90,7 +90,7 @@ module.exports = {
 }
 ```
 
-## 🖥️ Methods and settings
+## 🖥️ Methods and parameters
 
 Be careful [` MessageCreate `](#-messagecreate) and [` MessageDelete `](#-messagedelete) both has only one argument so as shown below: 
 ```js
@@ -100,6 +100,8 @@ While [` MessageUpdate `](#-messageupdate) has 2 arguments
 ```js
 async function parse(old_message, new_message)
 ```
+
+⎯ **Exports**
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js

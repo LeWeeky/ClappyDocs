@@ -13,8 +13,7 @@ to create something more complex.
 For example, the /kick, /ban and /mute commands could be grouped together in a module called ‘Moderation’.
 
 Another example: imagine a panel (embed) with a ‘contact staff’ button, which opens a new channel with just
-you and the staff. This is what is usually called a ‘ticket module’, which makes it easy to contact a server's
-staff in a private room.
+you and the staff. This is what is usually called a ‘ticket module’, which makes it easy to contact a server's staff in a private channel.
 
 ## ⚠️ Requirements 
 

@@ -32,7 +32,7 @@ module.exports = {
 }
 ```
 
-## 🖥️ Methods and settings
+⎯ **Exports**
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js
@@ -46,7 +46,6 @@ module.exports = {
 ```
 
 - ` parse ` → method to handle the event
-- ` conditions ` → list of methods to check if ` reaction ` and ` user ` has the right conditions
 - ` any_guild ` →  if false, the command can be executed only on the main guild
 - ` dm ` →  if true, we can use this command in direct messages
 - ` allow_bots ` →  if false, it will ignore events when the user is a bot

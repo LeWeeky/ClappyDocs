@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 # 📀 Models
-If you're familiar with object orientation, this is nothing more or less than a system of linking
+If you're familiar with object-oriented, this is nothing more or less than a system of linking
 to the database in the form of objects.
 
 Otherwise, imagine you can create a user, an animal or something else that we will call *object*
@@ -29,7 +29,7 @@ and we must do it inside ` init.js `. At the same time, we are going to initiali
 database using the ` init ` method.
 
 ```js
-const { clappybot } = require("../../main")
+const { clappybot } = require("clappybot")
 const { User } = require("./models/User")
 
 async function init_module(connection)
@@ -52,7 +52,7 @@ By convention, you should create your models in the ` models ` folder of the mod
 ` ./sources/modules/<module_name>/models/ ` (dont forget to replace ` <module_name> ` by your module's name).
 Like this :
 ```js
-const { AModel } = require("../../../libraries/models/AModel");
+const { AModel } = require("clappybot");
 
 class User extends AModel
 {
@@ -71,10 +71,10 @@ module.exports = {
 
 At first, import the abstract class ' AModels ' which our model will inherit
 ```js
-const { AModel } = require("../../../libraries/models/AModel");
+const { AModel } = require(clappybot);
 ```
 
-Creates your model as follows (replace ` <ModelName> ` by the name of your model):
+Create your model as follows (replace ` <ModelName> ` by the name of your model):
 ```js
 class <ModelName> extends AModel
 ```
@@ -116,8 +116,10 @@ date with hours (e.g: 2025-12-06 20:09:35) if you don't speficic one when you cr
 
 ` string `		→	` VARCHAR(255) ` this is a tiny text field of up to 256 characters.
 
-` text `		→	` TEXT ` a large text (the maximum size depends on whether you are using postgeSQL,
+` text `		→	` TEXT ` a large text (the maximum size depends on whether you are using PostgeSQL,
 MySQL/Mariadb or SQLite).
+
+` boolean `		→	` BOOLEAN ` simple true / false element.
 
 ⎯ 🥷 **And a secret field**
 
@@ -132,24 +134,6 @@ console.log(user.id)
 const user_by_id = await User.firstBy({id: user.id})
 console.log(user.username == user_by_id.username)
 // True
-```
-
-```
-const { clappybot } = require("../../main")
-const { User } = require("./models/User")
-
-async function init_module(connection)
-{
-	// Define the database to be used by your model
-	User.use(clappybot.database);
-
-	// Initialise the table (this sould be in your init.js)
-	User.init()
-}
-
-module.exports = {
-	init_module
-}
 ```
 
 

@@ -54,8 +54,8 @@ module.exports = {
 
 ## ➖ MemberLeave
 
+Possède un argument ` member ` qui est une instance de [` Member `](https://discord.js.org/docs/packages/discord.js/main/GuildMember:Class).
 ```js
-Has one argument ` member ` who is an instance of [` Member `](https://discord.js.org/docs/packages/discord.js/main/GuildMember:Class).
 async function parse(member)
 {
 	console.log("a member left:", member.user.username)
@@ -72,9 +72,9 @@ module.exports = {
 
 ## 🆙 MemberUpdate
 
-Has two arguments ` old_member ` and ` new_member ` who are instances of [` Member `](https://discord.js.org/docs/packages/discord.js/main/GuildMember:Class).
+Possède deux arguments ` old_member ` et ` new_member ` qui sont des instances de [` Member `](https://discord.js.org/docs/packages/discord.js/main/GuildMember:Class).
 
-⚠️ **Warning:** ` old_member ` is the member state before the update and ` new_member ` after the update.
+⚠️ **Attention:** ` old_member ` est l'état du membre avant la mise à jour et ` new_member ` après la mise à jour.
 ```js
 async function parse(old_member, new_member)
 {
@@ -90,7 +90,7 @@ module.exports = {
 }
 ```
 
-## 🖥️ Methods and settings
+## 🖥️ Methods and parameters
 
 Be careful [` MemberJoin `](#-memberjoin) and [` MemberLeave `](#-memberleave) both has only one argument so as shown below: 
 ```js
@@ -100,6 +100,8 @@ While [` MemberUpdate `](#-memberupdate) has 2 arguments
 ```js
 async function parse(old_member, new_member)
 ```
+
+⎯ **Exports**
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js

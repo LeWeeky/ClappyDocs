@@ -99,7 +99,7 @@ At the bottom of the file we have exports, which includes several important elem
 ```js
 module.exports = {
 	parse,
-	customId: "doc-test",
+	customId: "doc-who-are-you",
 	permissions: [],
 	any_guild: false,
 	dm: false

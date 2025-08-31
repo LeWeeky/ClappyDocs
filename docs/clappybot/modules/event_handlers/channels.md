@@ -34,7 +34,7 @@ how to work with [` Channel `](https://discord.js.org/docs/packages/discord.js/1
 
 Has one argument ` channel ` who is an instance of [` Channel `](https://discord.js.org/docs/packages/discord.js/14.19.3/BaseChannel:Class).
 ```js
-async function parse(message)
+async function parse(channel)
 {
 	console.log("new message from:", message.author.username)
 	console.log("content:", message.content)
@@ -88,7 +88,7 @@ module.exports = {
 }
 ```
 
-## 🖥️ Methods and settings
+## 🖥️ Methods and parameters
 
 Be careful [` ChannelCreate `](#-channelcreate) and [` ChannelDelete `](#-channeldelete) both has only one argument so as shown below: 
 ```js
@@ -98,6 +98,8 @@ While [` ChannelUpdate `](#-channelupdate) has 2 arguments
 ```js
 async function parse(old_channel, new_channel)
 ```
+
+⎯ **Exports**
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js

@@ -9,8 +9,8 @@ There is 2 kinds of events here:
 - [` MessageReactionAdd `](https://discord.js.org/docs/packages/discord.js/14.19.3/Client:Class#messageReactionAdd) → when a reaction is added to a message
 - [` MessageReactionDelete `](https://discord.js.org/docs/packages/discord.js/14.19.3/Client:Class#messageReactionDelete) → when a reaction is removed from a message
 
-Since we have 3 kinds of events, we can no longer simply put them in ` ./sources/modules/<module_name>/channels `,
-we need to specify which of the 3 events is to be used. To do this, we add an *extension* to the end of the file: 
+Since we have 2 kinds of events, we can no longer simply put them in ` ./sources/modules/<module_name>/channels `,
+we need to specify which of the 2 events is to be used. To do this, we add an *extension* to the end of the file: 
 - ` add ` → to handle [` MessageReactionAdd `](https://discord.js.org/docs/packages/discord.js/14.19.3/Client:Class#messageReactionAdd)
 - ` remove ` → to handle [` MessageReactionDelete `](https://discord.js.org/docs/packages/discord.js/14.19.3/Client:Class#messageReactionDelete)
 
@@ -64,7 +64,9 @@ module.exports = {
 	allow_bots: false
 }
 ```
-## 🖥️ Methods and settings
+## 🖥️ Methods and parameters
+
+⎯ **Exports**
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js

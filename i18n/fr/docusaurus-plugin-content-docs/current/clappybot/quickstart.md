@@ -16,7 +16,7 @@ cd <Nom de votre projet>
 npm install
 ```
 
-*⚠️ Si vous avez oublié ou donné de mauvaises informations pendant la configuration de l'environnement, référez vous à cette page [📝 Confiration de l'environnement](/clappybot/environment)*
+*⚠️ Si vous avez oublié ou donné de mauvaises informations pendant la configuration de l'environnement, référez vous à cette page [📝 Confirmation de l'environnement](/clappybot/environment)*
 
 
 Maintennat, nous avons besoin d'un premier module pour gérer les paramètres, pas de soucis

@@ -16,7 +16,7 @@ we need to specify which of the 3 events is to be used. To do this, we add an *e
 - ` delete ` → to handle [` ChannelDelete `](https://discord.js.org/docs/packages/discord.js/14.19.3/Client:Class#channelDelete)
 - ` update ` → to handle [` ChannelUpdate `](https://discord.js.org/docs/packages/discord.js/14.19.3/Client:Class#channelUpdate)
 
-⎯ **Example for each classes**
+⎯ **Example for each event**
 *replace ` <module_name> ` by the name of your module*
 - ` create ` → ` ./sources/modules/<module_name>/channels/create.js `
 - ` delete ` → ` ./sources/modules/<module_name>/channels/delete.js `
@@ -34,36 +34,32 @@ how to work with [` Channel `](https://discord.js.org/docs/packages/discord.js/1
 
 Has one argument ` channel ` who is an instance of [` Channel `](https://discord.js.org/docs/packages/discord.js/14.19.3/BaseChannel:Class).
 ```js
-async function parse(channel)
+export async function parse(channel)
 {
 	console.log("new message from:", message.author.username)
 	console.log("content:", message.content)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## ➖ ChannelDelete
 
 Has one argument ` channel ` who is an instance of [` Channel `](https://discord.js.org/docs/packages/discord.js/14.19.3/BaseChannel:Class).
 ```js
-async function parse(message)
+export async function parse(message)
 {
 	console.log("message from:", message.author.username, "has been deleted")
 	console.log("content:", message.content)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## 🆙 ChannelUpdate
@@ -72,20 +68,17 @@ Has two arguments ` old_channel ` and ` new_channel ` who are instances of [` Ch
 
 ⚠️ **Warning:** ` old_channel ` is the channel state before the update and ` new_channel ` after the update.
 ```js
-async function parse(old_channel, new_channel)
+export async function parse(old_channel, new_channel)
 {
 	console.log("channel:", old_channel.name, "has been updated")
 	console.log("old_channel:", old_channel)
 	console.log("new_channel:", new_channel)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## 🖥️ Methods and parameters
@@ -103,12 +96,10 @@ async function parse(old_channel, new_channel)
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 - ` parse ` → method to handle the event

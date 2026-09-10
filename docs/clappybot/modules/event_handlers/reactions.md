@@ -14,7 +14,7 @@ we need to specify which of the 2 events is to be used. To do this, we add an *e
 - ` add ` → to handle [` MessageReactionAdd `](https://discord.js.org/docs/packages/discord.js/14.19.3/Client:Class#messageReactionAdd)
 - ` remove ` → to handle [` MessageReactionDelete `](https://discord.js.org/docs/packages/discord.js/14.19.3/Client:Class#messageReactionDelete)
 
-⎯ **Example for each classes**
+⎯ **Example for each event**
 *replace ` <module_name> ` by the name of your module*
 - ` add ` → ` ./sources/modules/<module_name>/reactions/add.js `
 - ` remove ` → ` ./sources/modules/<module_name>/channels/remove.js `
@@ -32,18 +32,15 @@ how to work with [` MessageReaction `](https://discord.js.org/docs/packages/disc
 Has two arguments ` reaction ` who is an instance of [` MessageReaction `](https://discord.js.org/docs/packages/discord.js/14.19.3/MessageReaction:Class)
 and ` user ` who is an instance of [` User `](https://discord.js.org/docs/packages/discord.js/14.19.3/User:Class).
 ```js
-async function parse(reaction, user)
+export async function parse(reaction, user)
 {
 	console.log(message.author.username, "reacted with", reaction)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## ➖ MessageReactionRemove
@@ -51,18 +48,15 @@ module.exports = {
 Has two arguments ` reaction ` who is an instance of [` MessageReaction `](https://discord.js.org/docs/packages/discord.js/14.19.3/MessageReaction:Class)
 and ` user ` who is an instance of [` User `](https://discord.js.org/docs/packages/discord.js/14.19.3/User:Class).
 ```js
-async function parse(reaction, user)
+export async function parse(reaction, user)
 {
 	console.log("reaction of", message.author.username, "has been removed", reaction)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 ## 🖥️ Methods and parameters
 
@@ -70,13 +64,10 @@ module.exports = {
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 - ` parse ` → method to handle the event

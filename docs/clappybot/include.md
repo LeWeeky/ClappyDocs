@@ -18,19 +18,18 @@ You will also need to provide the environment file, for this look at [📝 Envir
 
 First, you need to include clappybot in your index file (the main file of your project) like this :
 ```js
-const { clappybot, modules } = require('clappybot');
+import { clappybot } from 'clappybot';
 ```
 
-Now, let's initialise the modules and the framework.
+Now, let's initialise the framework.
 ```js
-modules.init();
 clappybot.init(bot);
 ```
 
 Here ` bot ` should be the instance of your discord client, in general it is called ` bot ` or ` client `
 by convention but you could have called it something else, the important thing is that this variable
-corresponds to ` new Client(YOUR_PARAMETERS_HERE) `.
+corresponds to ` new Client(<YOUR_PARAMETERS_HERE>) `.
 
 ## 2️⃣ Modules
 
-Now you just have to create your modules in ` sources/modules `, learn how thank's to this page : [📦 Modules](/category/-modules)
+Now you just have to create your modules inside ` sources/modules `, learn how thank's to this page : [📦 Modules](/category/-modules)

@@ -22,30 +22,25 @@ Has two arguments ` old_presence ` and ` new_presence ` who are instances of
 
 ⚠️ **Warning:** ` old_presence ` is the user status before the update and ` new_presence ` after the update.
 ```js
-async function parse(old_presence, new_presence)
+export async function parse(old_presence, new_presence)
 {
 	console.log(`${new_presence.member.user.username}'s status changed`)
 }
 
-module.exports = {
-	parse
-}
+export const conditions = [];
+export const any_guild = false;
+export const allow_bots = false;
 ```
 
 ⎯ **Exports**
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const allow_bots = false;
 ```
 
 - ` parse ` → method to handle the event
 - ` any_guild ` →  if false, the command can be executed only on the main guild
-- ` dm ` →  if true, we can use this command in direct messages
 - ` allow_bots ` →  if false, it will ignore events when the user is a bot

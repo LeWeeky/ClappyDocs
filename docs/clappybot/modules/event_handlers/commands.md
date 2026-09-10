@@ -6,14 +6,14 @@ sidebar_position: 1
 A command starts with a prefix (by default: +) or with / (for slash commands).
 
 We are going to create a simple command that will give information about itself.
-The first thing to do it's create a file inside ` ./sources/modules/<module_name>/commands `
-(replace ` <module_name> ` with the name of your module). In this example, we can call the
+The first thing to do is create a file inside ` ./sources/modules/<module_name>/commands `
+(replace ` <module_name> ` with the name of your module). In this example, we'll call the
 command ` itself ` so let's create  ` ./sources/modules/<module_name>/commands/itself.js `
 and paste this code :
 ```js
-const { SlashCommandBuilder } = require("discord.js");
+import { SlashCommandBuilder } from "discord.js";
 
-async function parse(interaction, cmd, args)
+export async function parse(interaction, cmd, args)
 {
 	if (interaction.options)
 	{
@@ -37,27 +37,24 @@ async function parse(interaction, cmd, args)
 	}
 }
 
-module.exports = {
-	parse,
-	name: "itself",
-	permissions: [],
-	builder: new SlashCommandBuilder()
+export const name = "itself";
+export const permissions = [];
+export const builder = new SlashCommandBuilder();
 		.setName("itself")
-		.setDescription("I give informations about myselft."),
-	any_guild: false,
-	dm: false
-}
+		.setDescription("I give informations about myselft.");
+export const any_guild= false;
+export const dm = false;
 ```
 
-The method ` parse ` is run by system when a message is sent and starts with bot's prefix (+ by default)
+The method ` parse ` is run by the framework when a message is sent and starts with bot's prefix (+ by default)
 or when a slash command is executed.
 ```js
-async function parse(interaction, cmd, args)
+export async function parse(interaction, cmd, args)
 ```
 As you can see we have tree arguments:
 - ` interaction ` → corresponding to the [event](https://discordjs.guide/creating-your-bot/event-handling.html#individual-event-files) (` MessageCreate `, or ` InteractionCommand `) 
 - ` cmd ` → name of the command 
-- ` args ` →  corresponds to all the elements that follow the command name in a classic command
+- ` args ` →  corresponds to all the elements that follow the command name in a classic command (the ones with a prefix instead of slashcommand)
 
 ⎯ **e.g of args**
 ```bash
@@ -68,20 +65,17 @@ As you can see we have tree arguments:
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js
-module.exports = {
-	parse,
-	name: "itself",
-	permissions: [],
-	builder: new SlashCommandBuilder()
+export const name = "itself";
+export const permissions = [];
+export const builder = new SlashCommandBuilder();
 		.setName("itself")
-		.setDescription("I give informations about myselft."),
-	any_guild: false,
-	dm: false
-}
+		.setDescription("I give informations about myselft.");
+export const any_guild= false;
+export const dm = false;
 ```
 
 - ` parse ` → method to handle the command
-- ` name ` → name of the command
+- ` name ` → name of the command (lowercase, no spaces)
 - ` permissions ` → list of methods to check if` interaction.member ` has the right permissions
 - ` builder ` → a [` SlashCommandBuilder `](https://discordjs.guide/creating-your-bot/slash-commands.html#before-you-continue)
 - ` any_guild ` →  if false, the command can be executed only on the main guild

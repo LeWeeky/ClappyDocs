@@ -7,13 +7,15 @@ to the database in the form of objects.
 
 Otherwise, imagine you can create a user, an animal or something else that we will call *object*
 and save it into the database. In classic SQL system you have to send hard requests to insert, select,
-update, delete, etc in your database. Here we have **Models**, an easy way to manipulate data from database,
+update, drop, etc in your database. Here we have **Models**, an easy way to manipulate data from database,
 thank's to *objects* saved in your variables.
 
 Let's create a ` User ` *object* in ` ./sources/modules/<module_name>/models/ ` with ` username `, ` email `
 and `created_at ` as fields (dont forget to replace ` <module_name> ` by your module's name).
 ```js
-class User extends AModel
+import { AModel } from "clappybot";
+
+export default class User extends AModel
 {
 	static table = 'users';
 	static fields = {
@@ -21,40 +23,18 @@ class User extends AModel
 		email: 'string',
 		created_at: 'datetime'
 	};
-}
-```
-
-We have to asign a **database** to our ` User ` **Models**, we can do it thank's to ` use ` method
-and we must do it inside ` init.js `. At the same time, we are going to initialise the table in the
-database using the ` init ` method.
-
-```js
-const { clappybot } = require("clappybot")
-const { User } = require("./models/User")
-
-async function init_module(connection)
-{
-	// Define the database to be used by your model
-	User.use(clappybot.database);
-
-	// Initialise the table (this sould be in your init.js)
-	User.init()
-}
-
-module.exports = {
-	init_module
 }
 ```
 
 ## 🆕 Create new Model
 
-By convention, you should create your models in the ` models ` folder of the module :
+By convention, you should create your models inside the ` models ` folder of the module :
 ` ./sources/modules/<module_name>/models/ ` (dont forget to replace ` <module_name> ` by your module's name).
 Like this :
 ```js
-const { AModel } = require("clappybot");
+import { AModel } from "clappybot";
 
-class User extends AModel
+export default class User extends AModel
 {
 	static table = 'users';
 	static fields = {
@@ -64,19 +44,16 @@ class User extends AModel
 	};
 }
 
-module.exports = {
-	User
-}
 ```
 
 At first, import the abstract class ' AModels ' which our model will inherit
 ```js
-const { AModel } = require(clappybot);
+import { AModel } from "clappybot";
 ```
 
-Create your model as follows (replace ` <ModelName> ` by the name of your model):
+Create your model as follows (replace ` <ModelName> ` by the name of your model) and don't forget to use ` export default ` so you can import it from other files:
 ```js
-class <ModelName> extends AModel
+export default class <ModelName> extends AModel
 ```
 
 Set a table name (replace ` <table_name> ` with the name you want for your table):
@@ -88,14 +65,6 @@ Define fields (you will see below the possible kinds of fields):
 ```js
 static fields = {
 	example: "text"
-}
-```
-
-Dont forget to **export** your **Model** so you can import it inside other files
-(replace ` <ModelName> ` by the name of your model):
-```js
-module.exports = {
-	<ModelName>
 }
 ```
 
@@ -121,10 +90,12 @@ MySQL/Mariadb or SQLite).
 
 ` boolean `		→	` BOOLEAN ` simple true / false element.
 
+` timestamp ` → ` VARCHAR(20) ` used as timestamp (useful for database migrations)
+
 ⎯ 🥷 **And a secret field**
 
-You don't have to set it (and don't do it!) but there is a secret and default field inside each **Model**: ` id `.
-This allows you to have a **unique identifier** for each instance of a **Model**. For example each time you will create
+You don't have to set it (and don't do it!) but there is a secret and default field inside every **Model**: ` id `.
+This allows you to have a **unique identifier** for each instance of a **Model**. For example, each time you will create
 a user, it will come with a **unique identifier** ` id `, so you can find easily the user from its ` id `.
 ```js
 const user = await User.create({username: "Goya"});
@@ -170,7 +141,9 @@ static use(db)
 ```
 *Example*:
 ```js
-// Define the database to be used by your model
+// Define the database to be used by your model, the framework
+// will set clappybot.database by default so use this method
+// only if you want to use an other database
 User.use(clappybot.database);
 ```
 
@@ -186,8 +159,9 @@ static async init()
 ```
 *Example*:
 ```js
-// Initialise the table (this must be in your init.js)
-User.init()
+// Initialise the table (the framework do it for you but
+// if for some reason you need it, it's available)
+await User.init()
 ```
 
 ⎯ ✅ **To save instance to the database**
@@ -204,7 +178,7 @@ async save()
 // Create a new instance (not saved)
 const user = new User({username: "Goya", email: "goya@clappycrew.com"});
 // Save it to the database
-user.save();
+await user.save();
 ```
 
 ⎯ ♻️ **Create and save at the same time**
@@ -222,7 +196,7 @@ static async create(data = {})
 *Example*:
 ```js
 // The "create" method creates the new element and saves it directly
-const user = User.create({username: "LeWeeky", email: "leweeky@clappycrew.com"});
+const user = await User.create({username: "LeWeeky", email: "leweeky@clappycrew.com"});
 ```
 
 ⎯ 🗑️ **Delete instance**
@@ -255,9 +229,9 @@ static async deleteBy(fields)
 ```
 *Example*:
 ```js
-// All user with "LeWeeky" as their username AND "test@gmail.com" as
+// All user with "LeWeeky" as their username AND "leweeky@clappycrew.com" as
 // their email will be deleted
-await User.deleteBy({username: "LeWeeky", email: "test@mail.com"});
+await User.deleteBy({username: "LeWeeky", email: "leweeky@clappycrew.com"});
 ```
 
 ⎯ 🗃️ **Get all instances**
@@ -273,7 +247,7 @@ static async all()
 *Example*:
 ```js
 // Get all users
-const users = User.all()
+const users = await User.all()
 // Print all users in the console
 for (let i = 0; i < users.length; i++)
 {
@@ -298,9 +272,9 @@ static async findBy(fields, limit = 0)
 *Example*:
 ```js
 // Get all users with "LeWeeky" as their username
-const some_users = User.findBy({username: "LeWeeky"});
+const some_users = await User.findBy({username: "LeWeeky"});
 // Get 5 firsts users with "LeWeeky" as their username
-const some_users = User.findBy({username: "LeWeeky"}, 5);
+const some_users = await User.findBy({username: "LeWeeky"}, 5);
 ```
 
 ⎯ 🔎 **Get first instance by fields**
@@ -318,7 +292,7 @@ static async firstBy(fields)
 *Example*:
 ```js
 // Get the first user from users with one or more specific fields
-const leweeky = User.firstBy({username: "LeWeeky"});
+const leweeky = await User.firstBy({username: "LeWeeky"});
 ```
 
 ⎯ 🪄 **First or Create**
@@ -338,7 +312,7 @@ static async firstByOrCreate(fields)
 ```js
 // Get the first user corresponding
 // or create one if there are none
-const leweeky = User.firstBy({username: "LeWeeky"});
+const leweeky = await User.firstBy({username: "LeWeeky"});
 ```
 
 ⎯ 🥇 **First**
@@ -354,7 +328,7 @@ static async first()
 *Example*:
 ```js
 // Get the first user
-const user = User.first();
+const user = await User.first();
 ```
 
 ## 🆙 Update instance fields

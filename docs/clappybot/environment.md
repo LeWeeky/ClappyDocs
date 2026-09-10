@@ -3,19 +3,21 @@ sidebar_position: 5
 ---
 # 📝 Environment configuration
 
-You need to create your own `.env` in the `data` folder, to do this, you can use one of these template files : `data/template.sqlite.env`, `data/template.mysql.env` according to the type of database you want (sqlite for local, mysql for remote).
+You need to create your own `.env` at the root of your project, to do this, you can use one provided in the [repository](https://github.com/LeWeeky/clappybot) according to the type of database you want (sqlite for local / development, mysql/mariadb or postgres for remote / production).
 
 `SERVICE_ID` is a custom unique identifier for your bot (useful if you want to manage a large number of bots using containers).
 
-`DB_DRIVER` can be set to `mysql` (for remote db) or `sqlite` (for local db)
+`DB_DRIVER` can be set to `mysql` (remote db), `postgres` (remote db) or `sqlite` (local / auto generated db)
 
-`DB_HOST` (only if `DB_DRIVER=mysql`) IP or domain of your database
+`DB_NAME` name of the database
 
-`DB_USER` (only if `DB_DRIVER=mysql`) user for your database
+`DB_HOST` (not needed if `DB_DRIVER=sqlite`) IP or domain of your database
 
-`DB_PASSWORD` (only if `DB_DRIVER=mysql`) is the password of user in your database
+`DB_USER` (not needed if `DB_DRIVER=sqlite`) user for your database
 
-`DB_PATH` (only if `DB_DRIVER=sqlite`) the path to your local database for example : `DB_PATH=data/main.sqlite`
+`DB_PASSWORD` (not needed if `DB_DRIVER=sqlite`) is the password of user in your database
+
+`DB_FOLDER_PATH` the path to your local database for example : `DB_FOLDER_PATH=./data/`
 
 `TOKEN` is the token of your [discord application](https://discord.com/developers/applications) (bot)
 
@@ -35,4 +37,4 @@ You need to create your own `.env` in the `data` folder, to do this, you can use
 
 `MAIN_COMMAND` the main command of your bot for example : `MAIN_COMMAND=help`
 
-Set your parameters and save them in the `data/.env` file.
+Set your parameters and save them inside the `.env` file.

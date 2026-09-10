@@ -8,9 +8,9 @@ sidebar_position: 4
 
 If it's your first modal handler you may not have [` Modal `](https://discordjs.guide/interactions/modals.html#building-and-responding-with-modals). You can create one with this simple command template:
 ```js
-const {  ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder } = require("discord.js");
+import {  ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder } from "discord.js";
 
-async function parse(interaction)
+export async function parse(interaction)
 {
 	const modal = new ModalBuilder()
 		// replace "doc" by the name of your module
@@ -35,16 +35,13 @@ async function parse(interaction)
 	await interaction.showModal(modal);
 }
 
-module.exports = {
-	parse,
-	name: "modal",
-	permissions: [],
-	builder: new SlashCommandBuilder()
-		.setName("modal")
-		.setDescription("A simple test modal."),
-	any_guild: false,
-	dm: false
-}
+export const name = "modal";
+export const permissions = [];
+export const builder = new SlashCommandBuilder()
+	.setName("modal")
+	.setDescription("A simple test modal.");
+export const any_guild = false;
+export const dm = false;
 ```
 
 Here we will handle modal *who-are-you* from module *doc*. The syntax for button customId is pretty simple :
@@ -54,18 +51,18 @@ Here we will handle modal *who-are-you* from module *doc*. The syntax for button
 
 Because now, if you disable module *doc* and press "send" in any modal from this module, system will tell you
 that the modal doesn't work because the **module is disabled** (instead of telling you that the modal doesn't work
-because there is a bug or missing file).
+because there is a bug or missing file) and it's easier for debugging.
 
 ## 👍 Handle a modal
 
 The first thing to do it's create a file inside ` ./sources/modules/<module_name>/modals `
-(replace ` <module_name> ` with the name of your module). In this example, we called the
+(replace ` <module_name> ` with the name of your module). In this example, we'll call the
 modal ` who-are-you ` so let's create ` ./sources/modules/<module_name>/modals/who-are-you.js `
 and paste this code :
 ```js
-const { MessageFlags } = require("discord.js");
+import { MessageFlags } from "discord.js";
 
-async function parse(interaction)
+export async function parse(interaction)
 {
 	const name = interaction.fields.getTextInputValue('name');
 	const country = interaction.fields.getTextInputValue('country');
@@ -76,19 +73,16 @@ async function parse(interaction)
 	})
 }
 
-module.exports = {
-	parse,
-	// replace "doc" by the name of your module
-	customId: "doc-who-are-you",
-	permissions: [],
-	any_guild: false,
-	dm: false
-}
+// replace "doc" by the name of your module
+export const customId = "doc-who-are-you";
+export const permissions = [];
+export const any_guild = false;
+export const dm false;
 ```
 
 The method ` parse ` is run by system when a modal is submited.
 ```js
-async function parse(interaction)
+export async function parse(interaction)
 ```
 As you can see we have only one argument:
 - ` interaction ` → corresponding to the [event](https://discordjs.guide/creating-your-bot/event-handling.html#individual-event-files) (` ModalSubmitInteraction `) 
@@ -97,13 +91,10 @@ As you can see we have only one argument:
 
 At the bottom of the file we have exports, which includes several important elements.
 ```js
-module.exports = {
-	parse,
-	customId: "doc-who-are-you",
-	permissions: [],
-	any_guild: false,
-	dm: false
-}
+export const customId = "doc-who-are-you";
+export const permissions = [];
+export const any_guild = false;
+export const dm = false;
 ```
 
 - ` parse ` → method to handle the submit

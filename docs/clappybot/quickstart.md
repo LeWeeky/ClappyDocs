@@ -29,29 +29,15 @@ This is an option, but you'll probably want to create your own module to add you
 git clone https://github.com/LeWeeky/Module-template-for-clappybot.git sources/modules/template
 ```
 
-Before the first run, make sure all intents are enabled in your [discord application](https://discord.com/developers/applications). Then you can check for updates and install dependencies by running this command :
+Before the first run, make sure all intents are enabled on your [discord application](https://discord.com/developers/applications). Then you can check for updates and install dependencies by running this command :
 ```
 npm run update
 ```
 
 Once done, you can start as follows:
 
-for 🐧 **Linux** and 🍎 **MacOS** users
 ```
 npm run dev
 ```
 
-for 🪟 **Windows** users
-```
-node index.js
-```
-
-If you are a 🪟 **Windows** user it is recommended that you define the debug logs you want in your `.env` file like this:
-```
-DEBUG_INFO=true
-DEBUG_TRACE=true
-DEBUG_ERROR=true
-DEBUG_WARING=true
-```
-
-Now your bot should be online, congratulations 🎉 ! For the time being, you'll need to define a "main guild", which you can do using `/setguild` command, supplied with the module settings. Once this is done, you can set up a channel for announcements (updates, changes) with this command `/setsupport`.
+Now your bot should be online, congratulations 🎉 ! For the time being, you'll need to define a "main guild", which you can do using `/setguild` command, supplied with the module settings.

@@ -3,17 +3,41 @@ sidebar_position: 1
 ---
 # 👋 Introduction
 
-The very principle of this system is to allow you to create ‘modules’.
+The very principle of this system is to allow you to create **Modules**.
 
 ## ℹ️ What is a module ?
 
-This is a group of functions of the same nature or type, or functions that are supposed to work together
+It's a group of functions of the same nature or type, or functions that are supposed to work together
 to create something more complex.
 
-For example, the /kick, /ban and /mute commands could be grouped together in a module called ‘Moderation’.
+For example, the ` /kick `, ` /ban ` and ` /mute ` commands could be grouped together in a module called **Moderation**.
 
-Another example: imagine a panel (embed) with a ‘contact staff’ button, which opens a new channel with just
-you and the staff. This is what is usually called a ‘ticket module’, which makes it easy to contact a server's staff in a private channel.
+Another example: imagine a panel (embed) with a *contact staff* button, which opens a new channel with just
+you and the staff. This is what is usually called a **Ticket Module**, which makes it easy to contact a server's staff in a private channel.
+
+```mermaid
+---
+title: How it looks like
+---
+flowchart LR
+    moderation_commands[commands]
+    tickets_commands[commands]
+    tickets_buttons[buttons]
+    index.js
+    sources-->modules;
+    modules-->tickets;
+    modules-->moderation;
+    moderation-->moderation_commands
+    moderation_commands-->mute.js
+    moderation_commands-->kick.js
+    moderation_commands-->ban.js
+    tickets-->tickets_commands
+    tickets_commands-->tickets_settings.js
+    tickets-->tickets_buttons
+    tickets_buttons-->create.js
+    tickets_buttons-->close.js
+    tickets_buttons-->claim.js
+```
 
 ## ⚠️ Requirements 
 

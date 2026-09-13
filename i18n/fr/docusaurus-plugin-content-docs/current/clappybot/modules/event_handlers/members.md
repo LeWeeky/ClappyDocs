@@ -38,36 +38,28 @@ bien utiliser [` Member `](https://discord.js.org/docs/packages/discord.js/main/
 
 Possède un argument ` member ` qui est une instance de [` Member `](https://discord.js.org/docs/packages/discord.js/main/GuildMember:Class).
 ```js
-async function parse(member)
+export async function parse(member)
 {
 	console.log("new member:", member.user.username)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const allow_bots = false;
 ```
 
 ## ➖ MemberLeave
 
 Has one argument ` member ` who is an instance of [` Member `](https://discord.js.org/docs/packages/discord.js/main/GuildMember:Class).
 ```js
-async function parse(member)
+export async function parse(member)
 {
 	console.log("a member left:", member.user.username)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const allow_bots = false;
 ```
 
 ## 🆙 MemberUpdate
@@ -76,18 +68,14 @@ Has two arguments ` old_member ` and ` new_member ` who are instances of [` Memb
 
 ⚠️ **Warning:** ` old_member ` is the member state before the update and ` new_member ` after the update.
 ```js
-async function parse(old_member, new_member)
+export async function parse(old_member, new_member)
 {
 	console.log("member: ", old_member.user.username, " has been updated")
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const allow_bots = false;
 ```
 
 ## 🖥️ Méthodes et paramètres
@@ -95,28 +83,23 @@ module.exports = {
 Soyez prudent [` MemberJoin `](#-memberjoin) et [` MemberLeave `](#-memberleave) ont
 tous deux uniquement 1 argument comme ci-dessous :
 ```js
-async function parse(member)
+export async function parse(member)
 ```
 Alors que [` MemberUpdate `](#-memberupdate) possède 2 arguments
 ```js
-async function parse(old_member, new_member)
+export async function parse(old_member, new_member)
 ```
 
 ⎯ **Exportation**
 
 En bas du fichier, nous avons l'exportation (exports), qui inclu plusieurs éléments importants.
 ```js
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const allow_bots = false;
 ```
 
 - ` parse ` → la méthode qui gère le clique / la réponse
 - ` customId ` → customId l'identifiant du bouton que l'on veut gérer
 - ` any_guild ` →  si false, la commande ne pourra être exécutée que sur le serveur principal
-- ` dm ` →  si true, vous pourrez utiliser la commande même en messages privés
 - ` allow_bots ` →  si fasle, l'évènement sera ignoré quand il sera provoqué par un bot

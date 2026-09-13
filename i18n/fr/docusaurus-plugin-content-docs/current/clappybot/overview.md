@@ -4,14 +4,14 @@ slug: /clappybot
 ---
 # 👀 Aperçu
 
-[Discord.js](https://github.com/discordjs/discord.js) rend possible le développement d'incroyables
+[Discord.js](https://github.com/discordjs/discord.js) permet le développement d'incroyables
 bots. Cependant, plus on ajoute de fonctionalités, plus notre code devient surchargé et désorganisé.
 
 ClappyBot offre une solution à ce problème en apportant un système de gestion des éléments de l'API
-pour vous, en important toutes vos fonctionnalités sous forme de "modules".
+pour vous, en important toutes vos fonctionnalités sous forme de **Modules**.
 
 Un module est un groupe de commandes et d'intéractions du même thème. Par exemple, on peut 
-grouper les commandes "/ban", "/kick", etc dans un seul module appelé "modération".
+grouper les commandes `/ban`, `/kick`, etc dans un seul module appelé **Modération**.
 
 Ce framework vous offre la possibilité de créer autant de modules que possible facilement et rapidement, sans avoir à gérer une importation compliquée ou à gérer d'autres problèmes comme la
 liaison à la base de données, ainsi vous pouvez vous consacrer à la création de fonctionnalités

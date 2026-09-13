@@ -9,7 +9,7 @@ Toutes les tâches appartenant à un module doivent être installée dans le dos
 
 Voici un exemple de tâche qui vous dira "bon réveil" tous les matins à 8h :
 ```js
-const {CronJob} = require('cron')
+import { CronJob } from "cron"
 
 const job = new CronJob(
 	'0 8 * * *',
@@ -18,28 +18,14 @@ const job = new CronJob(
 	}
 );
 
-function start()
+export function start()
 {
 	job.start();
 }
 
-function stop()
+export function stop()
 {
 	job.stop();
-}
-module.exports = {
-	start,
-	stop
-}
-```
-
-## 🚨 Obligatoire
-
-Une tâche doit avoir une méthode ` start ` et une méthode ` stop `, celles-ci doivent être exportées de la façon suivante :
-```js
-module.exports = {
-	start,
-	stop
 }
 ```
 

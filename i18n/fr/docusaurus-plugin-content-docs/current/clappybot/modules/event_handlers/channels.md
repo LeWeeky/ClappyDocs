@@ -33,36 +33,32 @@ on doit spécifier quel est le type d'évènement correspondant. Pour ce faire o
 
 Possède un argument ` channel ` qui est une instance de [` Channel `](https://discord.js.org/docs/packages/discord.js/14.19.3/BaseChannel:Class).
 ```js
-async function parse(message)
+export async function parse(channel)
 {
 	console.log("new message from:", message.author.username)
 	console.log("content:", message.content)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## ➖ ChannelDelete
 
 Possède un argument ` channel ` qui est une instance de [` Channel `](https://discord.js.org/docs/packages/discord.js/14.19.3/BaseChannel:Class).
 ```js
-async function parse(message)
+export async function parse(message)
 {
 	console.log("message from:", message.author.username, "has been deleted")
 	console.log("content:", message.content)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## 🆙 ChannelUpdate
@@ -71,20 +67,17 @@ Possède deux arguments ` old_channel ` et ` new_channel ` qui sont des instance
 
 ⚠️ **Attention:** ` old_channel ` représente l'état du salon avant la mise à jour et ` new_channel ` après la mise à jour.
 ```js
-async function parse(old_channel, new_channel)
+export async function parse(old_channel, new_channel)
 {
 	console.log("channel:", old_channel.name, "has been updated")
 	console.log("old_channel:", old_channel)
 	console.log("new_channel:", new_channel)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## 🖥️ Méthodes et paramètres
@@ -103,12 +96,10 @@ async function parse(old_channel, new_channel)
 
 En bas du fichier, nous avons l'exportation (exports), qui inclu plusieurs éléments importants.
 ```js
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 - ` parse ` → la méthode qui gère le clique / la réponse

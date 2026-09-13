@@ -43,7 +43,7 @@ export const builder = new SlashCommandBuilder()
 		.setName("menu")
 		.setDescription("A simple test menu.");
 export const any_guild = false;
-export const dm = false
+export const dm = false;
 ```
 
 Here we will handle menu *test* from module *doc*. The syntax for menu customId is pretty simple :

@@ -211,7 +211,7 @@ async delete()
 *Example*:
 ```js
 // The "create" method creates the new element and saves it directly
-const user = User.create({username: "LeWeeky", email: "leweeky@clappycrew.com"});
+const user = await User.create({username: "LeWeeky", email: "leweeky@clappycrew.com"});
 // Delete user thank's to the instance
 await user.delete();
 ```
@@ -274,7 +274,7 @@ static async findBy(fields, limit = 0)
 // Get all users with "LeWeeky" as their username
 const some_users = await User.findBy({username: "LeWeeky"});
 // Get 5 firsts users with "LeWeeky" as their username
-const some_users = await User.findBy({username: "LeWeeky"}, 5);
+const some_users_with_limit = await User.findBy({username: "LeWeeky"}, 5);
 ```
 
 ⎯ 🔎 **Get first instance by fields**

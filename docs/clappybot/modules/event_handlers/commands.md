@@ -39,7 +39,7 @@ export async function parse(interaction, cmd, args)
 
 export const name = "itself";
 export const permissions = [];
-export const builder = new SlashCommandBuilder();
+export const builder = new SlashCommandBuilder()
 		.setName("itself")
 		.setDescription("I give informations about myselft.");
 export const any_guild= false;
@@ -67,7 +67,7 @@ At the bottom of the file we have exports, which includes several important elem
 ```js
 export const name = "itself";
 export const permissions = [];
-export const builder = new SlashCommandBuilder();
+export const builder = new SlashCommandBuilder()
 		.setName("itself")
 		.setDescription("I give informations about myselft.");
 export const any_guild= false;

@@ -33,38 +33,32 @@ on doit spécifier quel est le type d'évènement correspondant. Pour ce faire o
 
 Possède un argument ` message ` qui est une instance de [` Message `](https://discord.js.org/docs/packages/discord.js/14.19.3/Message:Class).
 ```js
-async function parse(message)
+export async function parse(message)
 {
 	console.log("new message from:", message.author.username)
 	console.log("content:", message.content)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## ➖ MessageDelete
 
 Possède un argument ` message ` qui est une instance de [` Message `](https://discord.js.org/docs/packages/discord.js/14.19.3/Message:Class).
 ```js
-async function parse(message)
+export async function parse(message)
 {
 	console.log("message from:", message.author.username, "has been deleted")
 	console.log("content:", message.content)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## 🆙 MessageUpdate
@@ -73,20 +67,17 @@ Possède deux arguments  ` old_message ` et ` new_message ` qui sont des instanc
 
 ⚠️ **Attention:** ` old_message ` représente l'était du message avant la mise à jour et ` new_message ` après la mise à jour.
 ```js
-async function parse(old_message, new_message)
+export async function parse(old_message, new_message)
 {
 	console.log("message from:", old_message.author.username, "has been updated")
 	console.log("old_content:", old_message.content)
 	console.log("new_message:", new_message.content)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## 🖥️ Méthodes et paramètres
@@ -94,24 +85,21 @@ module.exports = {
 Soyez prudent [` MessageCreate `](#-messagecreate) et [` MessageDelete `](#-messagedelete) ont
 tous deux uniquement 1 argument comme ci-dessous :
 ```js
-async function parse(message)
+export async function parse(message)
 ```
 Alors que [` MessageUpdate `](#-messageupdate) possède 2 arguments
 ```js
-async function parse(old_message, new_message)
+export async function parse(old_message, new_message)
 ```
 
 ⎯ **Exportation**
 
 En bas du fichier, nous avons l'exportation (exports), qui inclu plusieurs éléments importants.
 ```js
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 - ` parse ` → la méthode qui gère la sélection / la réponse

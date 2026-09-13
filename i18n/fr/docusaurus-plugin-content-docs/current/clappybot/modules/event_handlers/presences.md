@@ -20,30 +20,25 @@ Possède 2 arguments ` old_presence ` et ` new_presence ` qui sont des instances
 
 ⚠️ **Attention:** ` old_presence ` représente l'état statut et de l'activitée avant la mise à jour et ` new_presence ` après la mise à jour.
 ```js
-async function parse(old_presence, new_presence)
+export async function parse(old_presence, new_presence)
 {
 	console.log(`${new_presence.member.user.username}'s status changed`)
 }
 
-module.exports = {
-	parse
-}
+export const conditions = [];
+export const any_guild = false;
+export const allow_bots = false;
 ```
 
 ⎯ **Exportation**
 
 En bas du fichier, nous avons l'exportation (exports), qui inclu plusieurs éléments importants.
 ```js
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const allow_bots = false;
 ```
 
 - ` parse ` → la méthode qui gère la sélection / la réponse
 - ` any_guild ` →  si false, la commande ne pourra être exécutée que sur le serveur principal
-- ` dm ` →  si true, vous pourrez utiliser la commande même en messages privés
 - ` allow_bots ` →  si fasle, l'évènement sera ignoré quand il sera provoqué par un bot

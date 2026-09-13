@@ -9,12 +9,12 @@ sidebar_position: 4
 Si c'est votre premier gestionnaire de formulaire, vous n'avez peut-être pas encore de  [` Modal `](https://discordjs.guide/interactions/modals.html#building-and-responding-with-modals). Vous
 pouvez en créer un grâce à cet exemple :
 ```js
-const {  ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder } = require("discord.js");
+import {  ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder } from "discord.js";
 
-async function parse(interaction)
+export async function parse(interaction)
 {
 	const modal = new ModalBuilder()
-		// replace "doc" by the name of your module
+		// remplacez "doc" par le nom de votre module
 		.setCustomId('doc-who-are-you')
 		.setTitle('Who are you?');
 
@@ -36,16 +36,13 @@ async function parse(interaction)
 	await interaction.showModal(modal);
 }
 
-module.exports = {
-	parse,
-	name: "modal",
-	permissions: [],
-	builder: new SlashCommandBuilder()
-		.setName("modal")
-		.setDescription("A simple test modal."),
-	any_guild: false,
-	dm: false
-}
+export const name = "modal";
+export const permissions = [];
+export const builder = new SlashCommandBuilder()
+       .setName("modal")
+       .setDescription("A simple test modal.");
+export const any_guild = false;
+export const dm = false;
 ```
 
 Ici on va répondre au bouton *who-are-you*  qui provient du module *doc*. La syntaxe du customId du formulaire est plutôt simple :
@@ -54,7 +51,7 @@ Ici on va répondre au bouton *who-are-you*  qui provient du module *doc*. La sy
 ⎯ **Pourquoi utiliser la syntaxe clappybot ?**
 
 Parce que désormais, si vous désactivez le module *doc* et que vous cliquez sur un formulaire de ce module, le système vous dira que ce formulaire ne fonctionne pas car **le module a été désactivité**
-(au lieu de vous dire que ce formulaire ne fonctionne juste pas à cause d'un bug ou fichier manquant).
+(au lieu de vous dire que ce formulaire ne fonctionne juste pas à cause d'un bug ou fichier manquant) et c'est plus facile pour le débogage.
 
 ## 👍 Répondre au formulaire
 
@@ -63,7 +60,7 @@ La première chose à faire est de créer le fichier dans ` ./sources/modules/<m
 ```js
 const { MessageFlags } = require("discord.js");
 
-async function parse(interaction)
+export async function parse(interaction)
 {
 	const name = interaction.fields.getTextInputValue('name');
 	const country = interaction.fields.getTextInputValue('country');
@@ -86,7 +83,7 @@ module.exports = {
 
 La méthode ` parse ` est exécutée par le système quand le formulaire est soumis.
 ```js
-async function parse(interaction)
+export async function parse(interaction)
 ```
 
 Comme vous pouvez le voir, on a un seul argument :
@@ -96,13 +93,11 @@ Comme vous pouvez le voir, on a un seul argument :
 
 En bas du fichier, nous avons l'exportation (exports), qui inclu plusieurs éléments importants.
 ```js
-module.exports = {
-	parse,
-	customId: "doc-who-are-you",
-	permissions: [],
-	any_guild: false,
-	dm: false
-}
+// remplacez "doc" par le nom de votre module
+export const customId = "doc-who-are-you";
+export const permissions = [];
+export const any_guild = false;
+export const dm false;
 ```
 
 - ` parse ` → la méthode qui gère le clique / la réponse

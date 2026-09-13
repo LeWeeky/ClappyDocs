@@ -3,6 +3,8 @@ sidebar_position: 3
 ---
 # 💥 Bug ? Problèmes
 
+Cette documentation comporte des exemples pour ESModule, certains codes devront être modifiés si vous souhaitez utiliser TypeScript our CommonJS.
+
 Si vous rencontrez des difficultés, n'hésitez pas à rejoindre le [discord](https://discord.gg/UvQfUbk), ici une incroyable communauté se fera un plaisir de vous aider !
 
 Sinon, pennez le temps de lire les logs qui contiennent plein d'informations sur les causes du problème.

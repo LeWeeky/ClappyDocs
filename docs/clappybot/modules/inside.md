@@ -68,6 +68,8 @@ flowchart LR
 ### Menus
 
 `menus` → for your select menus
+```mermaid
+flowchart LR
 
 ```mermaid
 flowchart LR

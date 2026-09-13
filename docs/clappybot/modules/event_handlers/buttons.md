@@ -28,7 +28,7 @@ export async function parse(interaction)
 
 export const name = "button";
 export const permissions: [];
-export const builder = new SlashCommandBuilder();
+export const builder = new SlashCommandBuilder()
 		.setName("button")
 		.setDescription("A simple test button."),
 export const any_guild: false;

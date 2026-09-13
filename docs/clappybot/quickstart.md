@@ -19,7 +19,7 @@ npm install
 please refer to this page: [📝 Environment configuration](/clappybot/environment)*
 
 
-Now we need a first module for the settigns, don't worry we can clone this one : 
+Now we need a first module for the settigns, don't worry we can clone this one: 
 ```
 git clone https://github.com/LeWeeky/settings-module-for-clappybot.git sources/modules/mybotsettings
 ```
@@ -29,7 +29,7 @@ This is an option, but you'll probably want to create your own module to add you
 git clone https://github.com/LeWeeky/Module-template-for-clappybot.git sources/modules/template
 ```
 
-Before the first run, make sure all intents are enabled on your [discord application](https://discord.com/developers/applications). Then you can check for updates and install dependencies by running this command :
+Before the first run, make sure all intents are enabled on your [discord application](https://discord.com/developers/applications). Then you can check for updates and install dependencies by running this command:
 ```
 npm run update
 ```

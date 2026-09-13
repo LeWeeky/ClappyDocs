@@ -31,18 +31,15 @@ on doit spécifier quel est le type d'évènement correspondant. Pour ce faire o
 Possède deux arguments ` reaction ` qui est une instance de [` MessageReaction `](https://discord.js.org/docs/packages/discord.js/14.19.3/MessageReaction:Class)
 et ` user `  qui est une instance de [` User `](https://discord.js.org/docs/packages/discord.js/14.19.3/User:Class).
 ```js
-async function parse(reaction, user)
+export export async function parse(reaction, user)
 {
 	console.log(message.author.username, "reacted with", reaction)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ## ➖ MessageReactionRemove
@@ -50,31 +47,25 @@ module.exports = {
 Possède 2 arguments, ` reaction ` qui est une instance de [` MessageReaction `](https://discord.js.org/docs/packages/discord.js/14.19.3/MessageReaction:Class)
 et ` user `  qui est une instance de [` User `](https://discord.js.org/docs/packages/discord.js/14.19.3/User:Class).
 ```js
-async function parse(reaction, user)
+export async function parse(reaction, user)
 {
 	console.log("reaction of", message.author.username, "has been removed", reaction)
 }
 
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 ⎯ **Exportation**
 
 En bas du fichier, nous avons l'exportation (exports), qui inclu plusieurs éléments importants.
 ```js
-module.exports = {
-	parse,
-	conditions: [],
-	any_guild: false,
-	dm: false,
-	allow_bots: false
-}
+export const conditions = [];
+export const any_guild = false;
+export const dm = false;
+export const allow_bots = false;
 ```
 
 - ` parse ` → la méthode qui gère le clique / la réponse

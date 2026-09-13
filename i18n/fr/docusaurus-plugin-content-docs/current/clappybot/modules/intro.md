@@ -3,15 +3,39 @@ sidebar_position: 1
 ---
 # 👋 Introduction
 
-L'utilité principal de ce système est de vous permettre de créer des "modules".
+L'utilité principal de ce système est de vous permettre de créer des **Modules**.
 
 ## ℹ️ C'est quoi un module ?
 
 C'est un groupe de fonctionnalités d'un même type, d'une même nature, ou fonctions qui sont sensées fonctionner ensemble pour créer quelque chose de plus complexe.
 
-Par exemple, les commandes /kick, /ban et /mute peuvent être regroupées ensemble dans un seul module appelé "Modération".
+Par exemple, les commandes ` /kick `, ` /ban ` et /mute peuvent être regroupées ensemble dans un seul module appelé **Modération**.
 
-Un autre exemple : imaginez un panel (embed) avec un bouton "contacter le staff" qui ouvre un nouveau salon avec vous et le staff. C'est ce qu'on appelle généralement un "module ticket", il permet de prendre facilement contact avec le staff dans un salon privé.
+Un autre exemple : imaginez un panel (embed) avec un bouton *contacter le staff* qui ouvre un nouveau salon avec vous et le staff. C'est ce qu'on appelle généralement un **Module Ticket**, il permet de prendre facilement contact avec le staff dans un salon privé.
+
+```mermaid
+---
+title: How it looks like
+---
+flowchart LR
+    moderation_commands[commands]
+    tickets_commands[commands]
+    tickets_buttons[buttons]
+    index.js
+    sources-->modules;
+    modules-->tickets;
+    modules-->moderation;
+    moderation-->moderation_commands
+    moderation_commands-->mute.js
+    moderation_commands-->kick.js
+    moderation_commands-->ban.js
+    tickets-->tickets_commands
+    tickets_commands-->tickets_settings.js
+    tickets-->tickets_buttons
+    tickets_buttons-->create.js
+    tickets_buttons-->close.js
+    tickets_buttons-->claim.js
+```
 
 ## ⚠️ Prérequis 
 

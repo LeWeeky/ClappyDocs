@@ -9,7 +9,9 @@ Sinon, imaginez que vous pouvez créer un utilisateur, un animal ou autre qu'on 
 Créons un *object* ` User ` dans ` ./sources/modules/<module_name>/models/ ` avec comme champs ` username `, ` email ` et `created_at ` (n'oubliez pas de remplacer ` <module_name> ` par le nom de votre module).
 
 ```js
-class User extends AModel
+import { AModel } from "clappybot";
+
+export class User extends AModel
 {
 	static table = 'users';
 	static fields = {
@@ -17,26 +19,6 @@ class User extends AModel
 		email: 'string',
 		created_at: 'datetime'
 	};
-}
-```
-
-On doit impérativement assigner une **base de donnée** pour notre  **Models** ` User `, on peut le faire grâce à la méthode ` use `, de préférence dans le fichier ` init.js `. Par la même occasion, nous devons initialiser la base de données via la méthode  ` init `.
-
-```js
-const { clappybot } = require("clappybot")
-const { User } = require("./models/User")
-
-async function init_module(connection)
-{
-	// Défini la base de donnée à utiliser pour ce modèle
-	User.use(clappybot.database);
-
-	// Initialise la table users
-	User.init()
-}
-
-module.exports = {
-	init_module
 }
 ```
 
@@ -46,9 +28,9 @@ Par convention, vous devriez créer vos modèles dans le dossier ` models ` :
 ` ./sources/modules/<module_name>/models/ ` (n'oubliez pas de remplacer ` <module_name> ` par le nom de votre module).
 Comme ceci :
 ```js
-const { AModel } = require("clappybot");
+import { AModel } from "clappybot";
 
-class User extends AModel
+export class User extends AModel
 {
 	static table = 'users';
 	static fields = {
@@ -57,20 +39,16 @@ class User extends AModel
 		created_at: 'datetime'
 	};
 }
-
-module.exports = {
-	User
-}
 ```
 
 Premièrement, importez la classe abstraire ' AModels ' dont va hériter notre modèle
 ```js
-const { AModel } = require("clappybot");
+import { AModel } from "clappybot";
 ```
 
-Créez votre modèle comme ci-dessous (remplacez ` <ModelName> `par le nom de votre modèle) :
+Créez votre modèle comme ci-dessous (remplacez ` <ModelName> `par le nom de votre modèle) et n'oubliez pas d'utiliser ` export default ` pour rendre le modèle accessible depuis un autre fichier :
 ```js
-class <ModelName> extends AModel
+export default class <ModelName> extends AModel
 ```
 
 Définissez le nom de la table (remplacez ` <table_name> ` par le nom de votre table) :
@@ -82,14 +60,6 @@ Définissez les champs (options/paramètres), on parlera des differents types de
 ```js
 static fields = {
 	example: "text"
-}
-```
-
-N'oubliez pas d'exporter votre modèle pour pouvoir l'importer dans un autre fichier
-(remplacez ` <ModelName> ` par le nom de votre modèle) :
-```js
-module.exports = {
-	<ModelName>
 }
 ```
 
@@ -110,6 +80,8 @@ module.exports = {
 ` text `		→	` TEXT ` grand champ de texte (la taille maximum dépend de si vous utilisez PostgeSQL, MySQL/Mariadb ou SQLite).
 
 ` boolean `		→	` BOOLEAN ` un simple true / false.
+
+` timestamp ` → ` VARCHAR(20) ` utilisé comme timestamp (utile pour les migrations de base de données).
 
 ⎯ 🥷 **Et un champ secret**
 
@@ -160,7 +132,9 @@ static use(db)
 ```
 *Exemple*:
 ```js
-// Défini la base de donnée à utiliser pour ce modèle
+// Défini la base de donnée à utiliser pour ce modèle, le système
+// définira clappybot.database par défaut donc n'utilisez cette
+// méthode que si vous souhaitez utiliser une autre base de données
 User.use(clappybot.database);
 ```
 
@@ -175,8 +149,9 @@ static async init()
 ```
 *Exemple*:
 ```js
-// Initialise la table (vous devriez le faire dans le init.js)
-User.init()
+// Initialise la table (le système le fait pour vous mais
+// si pour une raison ou une autre vous en avez besoin elle existe)
+await User.init()
 ```
 
 ⎯ ✅ **Sauvegarder l'instance dans la base de données**
@@ -193,7 +168,7 @@ async save()
 // Crée une nouvelle instance (non sauvegardée)
 const user = new User({username: "Goya", email: "goya@clappycrew.com"});
 // La sauvegarde dans la base de données
-user.save();
+await user.save();
 ```
 
 ⎯ ♻️ **Crée et sauvegarde au même moment**
@@ -226,7 +201,7 @@ async delete()
 *Exemple*:
 ```js
 // La méthode "create" crée l'instance et la sauvegarde directement
-const user = User.create({username: "LeWeeky", email: "leweeky@clappycrew.com"});
+const user = await User.create({username: "LeWeeky", email: "leweeky@clappycrew.com"});
 // Supprime l'utilisateur de la base de données via son instance
 await user.delete();
 ```
@@ -263,7 +238,7 @@ static async all()
 *Example*:
 ```js
 // Récupère tous les utilisateurs
-const users = User.all()
+const users = await User.all()
 // Affiche tous les utilisateurs dans la console
 // un par un
 for (let i = 0; i < users.length; i++)
@@ -290,10 +265,10 @@ static async findBy(fields, limit = 0)
 ```js
 // Récupère tous les utilisateurs dont le username
 // est "LeWeeky"
-const some_users = User.findBy({username: "LeWeeky"});
+const some_users = await User.findBy({username: "LeWeeky"});
 // Récupère les 5 permiers utilisateurs dont le username
 // est "LeWeeky"
-const some_users = User.findBy({username: "LeWeeky"}, 5);
+const some_users_with_limit = await User.findBy({username: "LeWeeky"}, 5);
 ```
 
 ⎯ 🔎 **Récupère la première instance par champ**
@@ -312,7 +287,7 @@ static async firstBy(fields)
 ```js
 // recupère le premier utilisateur dont le username
 // est "LeWeeky"
-const leweeky = User.firstBy({username: "LeWeeky"});
+const leweeky = await User.firstBy({username: "LeWeeky"});
 ```
 
 ⎯ 🪄 **First or Create**
@@ -334,7 +309,7 @@ static async firstByOrCreate(fields)
 // Récupère le premier utilisateur dont le username est
 // "LeWeeky" ou crée un nouvel utilisateur si aucun n'a
 // été trouvé
-const leweeky = User.firstBy({username: "LeWeeky"});
+const leweeky = await User.firstBy({username: "LeWeeky"});
 ```
 
 ⎯ 🥇 **Premier**
@@ -350,7 +325,7 @@ static async first()
 *Example*:
 ```js
 // Récupère le premier utilisateur
-const user = User.first();
+const user = await User.first();
 ```
 
 ## 🆙 Mise à jour des champs

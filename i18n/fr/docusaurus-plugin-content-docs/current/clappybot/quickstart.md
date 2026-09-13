@@ -40,26 +40,12 @@ jour via  :
 npm run update
 ```
 
-Ceci étant fait, vous pouvez démarrer d'une des manières qui suit :
+Ceci étant fait, vous pouvez démarrer comme ci-dessous :
 
-pour les utilisateurs/rices 🐧 **Linux** et 🍎 **MacOS**
 ```
 npm run dev
-```
-pour les utilisateurs/rices 🪟 **Windows**
-```
-node index.js
-```
-
-Si vous êtes un(e) utilisateurs/rices 🪟 **Windows** il est recommandé d'activer les logs
-via votre fichier `.env` comme ceci :
-```
-DEBUG_INFO=true
-DEBUG_TRACE=true
-DEBUG_ERROR=true
-DEBUG_WARING=true
 ```
 
 Maintenant votre bot devrait être en ligne, félicitations 🎉 ! Pour la suite vous devrez définir
 votre "serveur principal", vous pouvez le faire grâce à la commande `/setguild`, fourni par le 
-le module de règlages. Une fois fait, vous pourrez définir un salon pour les annonces de mise à jour et changements via cette commande : `/setsupport`.
+le module de règlages.

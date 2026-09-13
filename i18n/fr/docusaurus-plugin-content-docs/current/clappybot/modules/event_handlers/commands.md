@@ -10,9 +10,9 @@ Pour commencer, il faudra créer la commande dans ` ./sources/modules/<module_na
 (remplacez ` <module_name> ` par le nom de votre module). Dans cet exemple, on va appeler la commande ` itself `
 donc créons le fichier ` ./sources/modules/<module_name>/commands/itself.js ` et ajoutons ce code :
 ```js
-const { SlashCommandBuilder } = require("discord.js");
+import { SlashCommandBuilder } from "discord.js";
 
-async function parse(interaction, cmd, args)
+export async function parse(interaction, cmd, args)
 {
 	if (interaction.options)
 	{
@@ -36,22 +36,19 @@ async function parse(interaction, cmd, args)
 	}
 }
 
-module.exports = {
-	parse,
-	name: "itself",
-	permissions: [],
-	builder: new SlashCommandBuilder()
+export const name = "itself";
+export const permissions = [];
+export const builder = new SlashCommandBuilder()
 		.setName("itself")
-		.setDescription("I give informations about myselft."),
-	any_guild: false,
-	dm: false
-}
+		.setDescription("I give informations about myselft.");
++export const any_guild= false;
++export const dm = false;
 ```
 
 La méthode ` parse ` est exécutée par le système quand un message est envoyé et qu'il commence par
 le préfixe du bot (par défaut +) ou quand une slash command est exécutée.
 ```js
-async function parse(interaction, cmd, args)
+export async function parse(interaction, cmd, args)
 ```
 Comme vous pouvez le voir, on a 3 arguments :
 - ` interaction ` → correpondant à l'[évènement](https://discordjs.guide/creating-your-bot/event-handling.html#individual-event-files) (` MessageCreate `, or ` InteractionCommand `) 
@@ -68,16 +65,13 @@ classiques (voir exemple ci-dessous).
 
 En bas du fichier, nous avons l'exportation (exports), qui inclu plusieurs éléments importants.
 ```js
-module.exports = {
-	parse,
-	name: "itself",
-	permissions: [],
-	builder: new SlashCommandBuilder()
+export const name = "itself";
+export const permissions = [];
+export const builder = new SlashCommandBuilder()
 		.setName("itself")
-		.setDescription("I give informations about myselft."),
-	any_guild: false,
-	dm: false
-}
+		.setDescription("I give informations about myselft.");
++export const any_guild= false;
++export const dm = false;
 ```
 
 - ` parse ` → méthode qui gère la commande
